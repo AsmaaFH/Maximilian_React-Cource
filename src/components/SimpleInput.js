@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import useInput from '../hooks/use-input';
 
 const SimpleInput = (props) => {
@@ -38,13 +37,25 @@ const SimpleInput = (props) => {
     <form onSubmit={formSubmitHandler}>
       <div className={nameInputClasses}>
         <label htmlFor="name">Your Name</label>
-        <input type="text" id="name" onChange={nameChangeHandler} onBlur={nameBlurHandler} />
+        <input
+          value={enteredName}
+          type="text"
+          id="name"
+          onChange={nameChangeHandler}
+          onBlur={nameBlurHandler}
+        />
       </div>
       {nameInputHasError && <p className="error-text">Name must not be empty!</p>}
 
       <div className={emailInputClasses}>
         <label htmlFor="email">Email</label>
-        <input type="email" id="email" onChange={emailChangeHandler} onBlur={emailBlurHandler} />
+        <input
+          value={enteredEmail}
+          type="email"
+          id="email"
+          onChange={emailChangeHandler}
+          onBlur={emailBlurHandler}
+        />
       </div>
       {emailInputHasError && <p className="error-text">Email must not be empty!</p>}
       <div className="form-actions">
