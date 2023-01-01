@@ -9,6 +9,7 @@ const SimpleInput = (props) => {
     hasError: nameInputHasError,
     valueChangeHandler: nameChangeHandler,
     inputBlurHandler: nameBlurHandler,
+    reset: resetNameInput,
   } = useInput(validateNameValue);
 
   const validateEmailValue = (value) => {
@@ -29,6 +30,7 @@ const SimpleInput = (props) => {
     if (!formIsValid) {
       return;
     }
+    resetNameInput();
   };
 
   const nameInputClasses = nameInputHasError ? 'form-control invalid' : 'form-control';
@@ -57,7 +59,7 @@ const SimpleInput = (props) => {
           onBlur={emailBlurHandler}
         />
       </div>
-      {emailInputHasError && <p className="error-text">Email must not be empty!</p>}
+      {emailInputHasError && <p className="error-text">Insert a vlaid Email!</p>}
       <div className="form-actions">
         <button disabled={!formIsValid}>Submit</button>
       </div>
