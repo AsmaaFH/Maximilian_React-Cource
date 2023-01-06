@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import AllQoutes from './pages/AllQoutes';
 import NewQuote from './pages/NewQuote';
 import QuoteDetail from './pages/QuoteDetail';
@@ -6,6 +6,9 @@ import QuoteDetail from './pages/QuoteDetail';
 function App() {
   return (
     <div>
+      <Route path={'/'} exact>
+        <Redirect to={'/quotes'} />
+      </Route>
       <Route path={'/quotes'} exact>
         <AllQoutes />
       </Route>
@@ -15,7 +18,7 @@ function App() {
       <Route path={'/new-quote'}>
         <NewQuote />
       </Route>
-      <Route path={''}></Route>
+
       <Route path={''}></Route>
     </div>
   );
