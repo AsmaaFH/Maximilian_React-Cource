@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link, Route, useParams } from 'react-router-dom';
+import { Route, useParams } from 'react-router-dom';
 import Comments from '../components/comments/Comments';
-import QuoteItem from '../components/quotes/QuoteItem';
 import HighlightedQuote from '../components/quotes/HighlightedQuote';
 function QuoteDetail() {
   const param = useParams();
@@ -11,7 +10,7 @@ function QuoteDetail() {
     { id: '2', author: 'author2', text: 'Text2' },
   ];
 
-  let quote = DUMMY.find((quote) => quote.id == param.id);
+  let quote = DUMMY.find((quote) => quote.id === param.id);
 
   if (!quote) {
     return <p>No Quotes Found!</p>;
