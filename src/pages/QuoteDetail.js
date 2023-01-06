@@ -8,7 +8,7 @@ function QuoteDetail() {
     <>
       <h1>Details</h1>
       <h1>{param.id}</h1>
-      <Link to={`/quotes/${pasram.id}/comments`}>Comments</Link>
+      <Link to={`/quotes/${param.id}/comments`}>Comments</Link>
       <Route path={'/quotes/:id/comments'}>
         <Comments />
       </Route>
