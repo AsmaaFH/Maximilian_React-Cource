@@ -18,6 +18,8 @@ const QuoteList = (props) => {
   const history = useHistory();
   const location = useLocation();
 
+  console.log(props.quotes);
+
   const queryParams = new URLSearchParams(location.search);
 
   const isSortingAscending = queryParams.get('sort') === 'asc';
