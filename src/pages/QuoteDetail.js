@@ -1,13 +1,15 @@
 import React from 'react';
-import { Route, useParams } from 'react-router-dom';
+import { Link, Route, useParams } from 'react-router-dom';
 import Comments from '../components/comments/Comments';
 import HighlightedQuote from '../components/quotes/HighlightedQuote';
 function QuoteDetail() {
   const param = useParams();
 
   const DUMMY = [
-    { id: '1', author: 'author1', text: 'Twxt1' },
-    { id: '2', author: 'author2', text: 'Text2' },
+    { id: '1', author: 'author1', text: 'GText' },
+    { id: '2', author: 'suthor2', text: 'AText' },
+    { id: '3', author: 'zuthor2', text: 'SText' },
+    { id: '4', author: 'buthor2', text: 'SText' },
   ];
 
   let quote = DUMMY.find((quote) => quote.id === param.id);
@@ -19,6 +21,14 @@ function QuoteDetail() {
   return (
     <>
       <HighlightedQuote author={quote.author} text={quote.text} />
+      <Route path={`/quotes/${quote.id}`} exact>
+        <div className="centered">
+          <Link to={`/quotes/${quote.id}/comments`} className="btn--flat">
+            Load Comments
+          </Link>
+        </div>
+      </Route>
+
       <h1>{param.id}</h1>
       <Route path={'/quotes/:id/comments'}>
         <Comments />
