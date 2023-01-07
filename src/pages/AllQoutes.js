@@ -5,8 +5,10 @@ const AllQoutes = () => {
   return (
     <QuoteList
       quotes={[
-        { id: '1', author: 'author1', text: 'Twxt1' },
-        { id: '2', author: 'author2', text: 'Text2' },
+        { id: '1', author: 'author1', text: 'GText' },
+        { id: '2', author: 'suthor2', text: 'AText' },
+        { id: '3', author: 'zuthor2', text: 'SText' },
+        { id: '4', author: 'buthor2', text: 'SText' },
       ]}
     />
   );
