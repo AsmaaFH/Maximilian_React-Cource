@@ -13,31 +13,38 @@ const AuthForm = () => {
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
+    let url;
     if (isLogin) {
+      url =
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyByfD2AEbryVxhDZuHePBojs7CHSCnagbU';
     } else {
-      fetch(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyByfD2AEbryVxhDZuHePBojs7CHSCnagbU',
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            email: enteredEmail,
-            password: enteredPassword,
-            returnSecureToken: true,
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      ).then((res) => {
+      url =
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyByfD2AEbryVxhDZuHePBojs7CHSCnagbU';
+    }
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: enteredEmail,
+        password: enteredPassword,
+        returnSecureToken: true,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => {
         if (res.ok) {
-          //..
+          console.log('Success');
         } else {
           return res.json().then((data) => {
-            console.log(data);
+            throw new Error(data.error.message);
           });
         }
+      })
+      .catch((err) => {
+        console.log(err.message);
+        alert(err.message);
       });
-    }
   };
 
   const switchAuthModeHandler = (event) => {
