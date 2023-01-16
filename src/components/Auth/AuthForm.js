@@ -1,5 +1,6 @@
 import { useContext, useRef, useState } from 'react';
 import AuthContext from '../../store/auth-context';
+import { API_KEY } from '../../API_KEY';
 
 import classes from './AuthForm.module.css';
 
@@ -18,11 +19,9 @@ const AuthForm = () => {
 
     let url;
     if (!isLoggedIn) {
-      url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyByfD2AEbryVxhDZuHePBojs7CHSCnagbU';
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`;
     } else {
-      url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyByfD2AEbryVxhDZuHePBojs7CHSCnagbU';
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`;
     }
     fetch(url, {
       method: 'POST',
