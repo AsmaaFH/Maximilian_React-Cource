@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from 'react';
+import { useContext, useRef } from 'react';
 import AuthContext from '../../store/auth-context';
 import { API_KEY } from '../../API_KEY';
 
@@ -47,7 +47,9 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
-        authCtx.login(data.idToken);
+        const expirationTime = new Date(new Date().getTime + +data.expiresIn * 1000);
+        authCtx.login(data.idToken, expirationTime.toISOString);
+        console.log(data);
         history.replace('/');
       })
       .catch((err) => {
@@ -57,8 +59,6 @@ const AuthForm = () => {
 
   const switchAuthModeHandler = (event) => {
     event.preventDefault();
-
-    console.log(emailInputRef.current.value);
   };
 
   return (
