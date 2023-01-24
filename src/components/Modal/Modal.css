@@ -17,10 +17,6 @@
   animation: openModal 0.4s ease-out forwards;
 }
 
-.ModalClosed {
-  animation: closeModal 0.4s ease-out forwards;
-}
-
 @keyframes openModal {
   0% {
     opacity: 0;

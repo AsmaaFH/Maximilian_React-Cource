@@ -13,8 +13,3 @@
   opacity: 1;
   transform: translateY(0);
 }
-
-.BackdropClosed {
-  opacity: 0;
-  transform: translateY(-100%);
-}
